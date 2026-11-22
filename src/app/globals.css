@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Palette : modifier ici pour changer tout le thème. */
+:root {
+  --bg: #f4f7fc; --surface: #ffffff; --fg: #0c1424; --muted: #55627b; --line: #d8e0ee;
+  --accent: #1a6fe0; --accent-soft: rgb(26 111 224 / 0.1); --grid: rgb(26 111 224 / 0.05);
+}
+.dark {
+  --bg: #050a15; --surface: #0b1527; --fg: #e9eff9; --muted: #8fa0bb; --line: #17253f;
+  --accent: #3d8bff; --accent-soft: rgb(61 139 255 / 0.14); --grid: rgb(61 139 255 / 0.06);
+}
+
+@theme inline {
+  --color-bg: var(--bg); --color-surface: var(--surface); --color-fg: var(--fg);
+  --color-muted: var(--muted); --color-line: var(--line);
+  --color-accent: var(--accent); --color-accent-soft: var(--accent-soft);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), sans-serif;
+  --animate-travel: travel 3.6s ease-in-out infinite;
+  --animate-nudge: nudge 1.3s ease-in-out infinite;
+}
+
+@keyframes travel { 0% { top: 44px; opacity: 0; } 12%, 88% { opacity: 1; } 100% { top: calc(100% - 52px); opacity: 0; } }
+@keyframes nudge { 50% { opacity: 0.2; transform: translateX(8px); } }
+
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Briques de style réutilisables. */
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-6xl px-5; }
+  .section { @apply py-12 md:py-16; }
+  .h2 { @apply font-display text-2xl font-bold leading-tight md:text-3xl; }
+  .card { @apply rounded-2xl border border-line bg-surface; }
+  .tag { @apply mb-2 mr-2 inline-block rounded-full border border-line px-3 py-0.5 text-xs text-muted; }
+  .tag-strong { @apply mb-3 mr-2.5 border-accent bg-accent-soft px-3.5 py-1 text-sm text-fg; }
+  .btn { @apply inline-flex items-center gap-2 rounded-xl border border-line bg-surface px-4 py-2 text-sm font-medium transition-colors hover:border-accent; }
+  .btn-primary { @apply border-accent bg-accent text-white; }
+  .btn-soft { @apply border-accent bg-accent-soft font-semibold text-accent hover:bg-accent hover:text-white; }
+  .field { @apply w-full rounded-xl border border-line bg-bg px-3 py-2.5; }
+  .timeline { @apply ml-1.5 border-l-2 border-line pl-6; }
+  .timeline-item { @apply relative mb-6 before:absolute before:-left-[31px] before:top-2 before:size-3 before:rounded-full before:bg-accent before:content-['']; }
+}
