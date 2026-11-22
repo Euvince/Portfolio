@@ -35,7 +35,7 @@ export default async function CvPage({ params }: { params: Promise<{ locale: str
               <b>{pick(e.role, locale)}</b>
               <p className="text-muted">{e.company}{e.location && ` (${pick(e.location, locale)})`} · {periodText(e.period, locale)}</p>
               {e.note && <p className="text-muted">{pick(e.note, locale)}</p>}
-              <ul className="my-2 list-disc space-y-1 pl-5">{pick(e.highlights, locale).map((h) => <li key={h}>{h}</li>)}</ul>
+              {/* <ul className="my-2 list-disc space-y-1 pl-5">{pick(e.highlights, locale).map((h) => <li key={h}>{h}</li>)}</ul> */}
               {e.outcome && <p><b>{dict.outcome} :</b> {pick(e.outcome, locale)}</p>}
             </div>
           ))}

@@ -42,7 +42,7 @@ body {
   .card { @apply rounded-2xl border border-line bg-surface; }
   .tag { @apply mb-2 mr-2 inline-block rounded-full border border-line px-3 py-0.5 text-xs text-muted; }
   .tag-strong { @apply mb-3 mr-2.5 border-accent bg-accent-soft px-3.5 py-1 text-sm text-fg; }
-  .btn { @apply inline-flex items-center gap-2 rounded-xl border border-line bg-surface px-4 py-2 text-sm font-medium transition-colors hover:border-accent; }
+  .btn { @apply cursor-pointer inline-flex items-center gap-2 rounded-xl border border-line bg-surface px-4 py-2 text-sm font-medium transition-colors hover:border-accent; }
   .btn-primary { @apply border-accent bg-accent text-white; }
   .btn-soft { @apply border-accent bg-accent-soft font-semibold text-accent hover:bg-accent hover:text-white; }
   .field { @apply w-full rounded-xl border border-line bg-bg px-3 py-2.5; }
